@@ -1,0 +1,23 @@
+{
+  "name": "k8s-whoami",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SegersIan/k8s-whoami.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SegersIan/k8s-whoami/issues"
+  },
+  "homepage": "https://github.com/SegersIan/k8s-whoami#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
