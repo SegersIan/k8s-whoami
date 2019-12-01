@@ -24,14 +24,14 @@ spec:
                   fieldPath: metadata.name
           resources:
             requests:
-              cpu: 500m
-              memory: 1Gi
+              cpu: 200m
+              memory: 200Mi
             limits:
-              cpu: 600m
-              memory: 1Gi
+              cpu: 300m
+              memory: 600Mi
           ports:
             - containerPort: 3000
-              name: whoami
+              name: whoami-port
 ---
 apiVersion: v1
 kind: Service
@@ -39,8 +39,27 @@ metadata:
   name: whoami
 spec:
   ports:
-    - port: 3000
+    - port: 80
       protocol: TCP
+      targetPort: whoami-port
   selector:
-    app: backend
-  type: ClusterIP
+    app: whoami
+  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: whoami-ingress
+  labels:
+    app: whoami
+    tier: public
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+    - host: whoami.mymusic.zone
+      http:
+        paths:
+          - backend:
+              serviceName: whoami
+              servicePort: 80
