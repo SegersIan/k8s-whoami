@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
         timeUtc: now.toISOString(),
         podName: POD_NAME,
         requestHeaders: req.headers
-    }));
+    }, null, '\t'));
 });
 
 app.listen(PORT, () => console.log(`WHOAMI listening on port ${PORT}`));

@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   frontend:
-    image: iansegers/whoami:v1
+    image: iansegers/whoami:v2
     environment:
       POD_NAME: 'my-pod'
     ports:
